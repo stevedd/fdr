@@ -2,7 +2,7 @@ Summary:	A daemon which enables ftrace probes and harvests the data
 Name:		fdr
 URL:		https://github.com/oracle/fdr.git
 Version:	1.3
-Release:	2%{?dist}
+Release:	3%{?dist}
 License:	UPL
 Source0:	http://people.redhat.com/steved/fdr/%{name}-%{version}.tar.xz
 
@@ -10,7 +10,7 @@ BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	sed
 BuildRequires:	systemd-rpm-macros
-Requires:	systemd
+Requires:	systemd logrotate
 
 %description
 The flight data recorder, a daemon which enables ftrace probes
@@ -30,7 +30,8 @@ install -m 755 fdrd %{buildroot}/%{_sbindir}
 
 mkdir -p %{buildroot}%{_datadir}/fdr/samples
 install -m 644 samples/nfs %{buildroot}/%{_datadir}/fdr/samples
-install -m 644 samples/nfs.logrotate %{buildroot}/%{_datadir}/fdr/samples
+mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
+install -m 644 samples/nfs.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/nfs
 
 mkdir -p %{buildroot}/%{_unitdir}
 install -m 644 %{name}.service %{buildroot}/%{_unitdir}/%{name}.service
@@ -51,7 +52,7 @@ install -m 644 fdrd.man %{buildroot}/%{_mandir}/man8/fdrd.8
 %{_sbindir}/fdrd
 %{_unitdir}/fdr.service
 %{_datadir}/fdr/samples/nfs
-%{_datadir}/fdr/samples/nfs.logrotate
+%{_sysconfdir}/logrotate.d/nfs
 %{_mandir}/man8/*
 %doc README.md
 %license LICENSE
