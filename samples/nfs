@@ -58,4 +58,6 @@ enable sunrpc/rpc_xdr_overflow
 enable sunrpc/xprt_ping
 enable sunrpc/xprt_timer
 #
+# Needs to be the last line in the config
+# file. Verbs after this verb will not be seen.
 saveto /var/log/nfs.log 128k

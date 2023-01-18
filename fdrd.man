@@ -102,6 +102,13 @@ can be harvested manually by reading:
 The ftrace buffers in the kernel are circular. If no
 process harvests the data, new data will overwrite old data.
 .P
+Note, the 
+.B saveto 
+verbs has to be last line in a configuration
+file. Verbs after the 
+.B saveto 
+verbs will not be seen.
+.P
 .B minfree
 value
 .P
