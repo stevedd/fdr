@@ -27,7 +27,7 @@ available.  Error messages from fdr can be viewed via systemctl,
 for example,
 .P
 .B
-systemctl status -l fdr
+systemctl status -l fdrd
 .SH Configuration File Syntax
 
 The following keywords and options are recognized

@@ -34,23 +34,23 @@ mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 samples/nfs.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/nfs
 
 mkdir -p %{buildroot}/%{_unitdir}
-install -m 644 %{name}.service %{buildroot}/%{_unitdir}/%{name}.service
+install -m 644 %{name}d.service %{buildroot}/%{_unitdir}/%{name}d.service
 
 mkdir -p %{buildroot}/%{_mandir}/man8
 install -m 644 fdrd.man %{buildroot}/%{_mandir}/man8/fdrd.8
 
 %post
-%systemd_post %{name}.service
+%systemd_post %{name}d.service
 
 %preun
-%systemd_preun %{name}.service
+%systemd_preun %{name}d.service
 
 %postun
-%systemd_postun_with_restart %{name}.service
+%systemd_postun_with_restart %{name}d.service
 
 %files
 %{_sbindir}/fdrd
-%{_unitdir}/fdr.service
+%{_unitdir}/fdrd.service
 %{_datadir}/fdr/samples/nfs
 %{_sysconfdir}/logrotate.d/nfs
 %{_mandir}/man8/*
