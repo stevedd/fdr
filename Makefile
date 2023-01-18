@@ -46,11 +46,11 @@ release:
 
 rpm: tarball
 	cp buildrpm/$(LATEST_VERS)/fdr.spec \
-		$(RPMBUILD_DIR)/rpmbuild/SPECS/fdr.spec
-	rpmbuild -bb $(RPMBUILD_DIR)/rpmbuild/SPECS/fdr.spec 
+		$(RPMBUILD_DIR)/SPECS/fdr.spec
+	rpmbuild -bb $(RPMBUILD_DIR)/SPECS/fdr.spec 
 
 srpm: tarball
 	cp buildrpm/$(LATEST_VERS)/fdr.spec \
-		$(RPMBUILD_DIR)/rpmbuild/SPECS/fdr.spec
-	rpmbuild -bs $(RPMBUILD_DIR)/rpmbuild/SPECS/fdr.spec 
+		$(RPMBUILD_DIR)/SPECS/fdr.spec
+	rpmbuild -bs $(RPMBUILD_DIR)/SPECS/fdr.spec 
 
